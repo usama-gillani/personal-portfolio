@@ -611,3 +611,31 @@ summary:focus-visible {
     transition-duration: 0.01ms !important;
   }
 }
+
+.diagram-canvas-stack {
+  display: flex;
+  justify-content: center;
+}
+
+.diagram-canvas svg {
+  display: block;
+  max-width: none;
+}
+
+.diagram-canvas .edgeLabel rect,
+.diagram-canvas .edgeLabel .labelBkg {
+  fill: #121513 !important;
+  background: #121513 !important;
+}
+
+.diagram-canvas .edgeLabel,
+.diagram-canvas .edgeLabel span,
+.diagram-canvas .nodeLabel,
+.diagram-canvas .nodeLabel p,
+.diagram-canvas .nodeLabel span,
+.diagram-canvas .label,
+.diagram-canvas foreignObject div,
+.diagram-canvas foreignObject span,
+.diagram-canvas foreignObject p {
+  color: #e7ebe3 !important;
+}

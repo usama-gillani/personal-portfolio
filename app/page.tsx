@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import portrait from "@/public/usama.jpg";
 import AgentRoster from "@/components/AgentRoster";
 import Reveal from "@/components/Reveal";
@@ -79,24 +80,53 @@ const principles = [
   },
 ];
 
-const cases = [
+const cases: {
+  id: string;
+  title: string;
+  description: string;
+  href?: string;
+}[] = [
   {
     id: "CASE 01",
-    title: "AI assistant engineering",
+    title: "Urdu ticker and flasher OCR",
     description:
-      "Add a real project here: the problem, your architecture, implementation decisions, and what you learned.",
+      "Two FastAPI services detect Urdu broadcast lines, read them with UTRNet, and optionally correct numerals. All three models run on Triton.",
+    href: "/work/urdu-ticker-ocr",
   },
   {
     id: "CASE 02",
-    title: "Document intelligence pipeline",
+    title: "Grounded news assistant",
     description:
-      "Document a real implementation, including extraction methods, retrieval choices, trade-offs, and evaluation.",
+      "A FastAPI service turns a natural-language question into SQL over stored OCR tickers, drops near-duplicate lines, and asks gpt-oss-120b to answer only from those lines.",
+    href: "/work/grounded-news-assistant",
   },
   {
     id: "CASE 03",
-    title: "APIs and AI integrations",
+    title: "Social and web content assistant",
     description:
-      "Showcase actual code, integration diagrams, engineering challenges, and verified outcomes from your own work.",
+      "A FastAPI service searches six crawled platform tables with parser filters, drops near-duplicate text, and asks gpt-oss-120b to answer only from those rows.",
+    href: "/work/social-web-assistant",
+  },
+  {
+    id: "CASE 04",
+    title: "Media records assistant",
+    description:
+      "A FastAPI service copies media records into Qdrant, answers scoped questions with tool calling, and renders HTML reports from the records a user selected.",
+    href: "/work/media-records-assistant",
+  },
+  {
+    id: "CASE 05",
+    title: "Workspace RAG assistant",
+    description:
+      "POST /v1/user/chat answers inside a workspace scope. The user picks the answer model. A bounded tool loop retrieves files, SQL, and mail before that model speaks.",
+    href: "/work/workspace-rag-assistant",
+  },
+  {
+    id: "CASE 06",
+    title: "Document ingestion",
+    description:
+      "Five file types enter one pipeline. Text PDF pages stay with Docling, scans go to a layout API, and every path becomes sections, chunks, and dense BGE-M3 vectors.",
+    href: "/work/document-ingestion",
   },
 ];
 
@@ -401,30 +431,43 @@ export default function Home() {
           </div>
 
           <div className="mt-12 border-y border-white/10 sm:mt-16">
-            {cases.map((item) => (
-              <article
-                key={item.id}
-                className="queue-row grid gap-6 border-t border-white/10 py-8 first:border-t-0 sm:grid-cols-[90px_1fr_auto] sm:items-center sm:gap-8 sm:py-10"
-              >
-                <span className="font-mono text-xs text-ink/40">{item.id}</span>
-                <div>
-                  <p className="text-xl font-medium tracking-tight sm:text-2xl">
-                    {item.title}
-                  </p>
-                  <p className="mt-2 max-w-xl text-sm leading-6 text-ink/55">
-                    {item.description}
-                  </p>
-                </div>
-                <span className="inline-flex w-fit items-center gap-2 border border-lime/30 px-3 py-2 font-mono text-[10px] uppercase tracking-wider text-lime">
-                  <Dot className="size-1.5" /> queued
-                </span>
-              </article>
-            ))}
+            {cases.map((item) => {
+              const row = (
+                <>
+                  <span className="font-mono text-xs text-ink/40">{item.id}</span>
+                  <div>
+                    <p className="text-xl font-medium tracking-tight transition-colors group-hover:text-lime sm:text-2xl">
+                      {item.title}
+                    </p>
+                    <p className="mt-2 max-w-xl text-sm leading-6 text-ink/55">
+                      {item.description}
+                    </p>
+                  </div>
+                  {item.href ? (
+                    <span className="inline-flex w-fit items-center gap-2 bg-lime px-3 py-2 font-mono text-[10px] uppercase tracking-wider text-void">
+                      Read <ArrowUpRight className="size-3.5" />
+                    </span>
+                  ) : (
+                    <span className="inline-flex w-fit items-center gap-2 border border-lime/30 px-3 py-2 font-mono text-[10px] uppercase tracking-wider text-lime">
+                      <Dot className="size-1.5" /> queued
+                    </span>
+                  )}
+                </>
+              );
+              const className = `queue-row${item.href ? " group" : ""} grid gap-6 border-t border-white/10 py-8 first:border-t-0 sm:grid-cols-[90px_1fr_auto] sm:items-center sm:gap-8 sm:py-10`;
+
+              return item.href ? (
+                <Link key={item.id} href={item.href} className={className}>
+                  {row}
+                </Link>
+              ) : (
+                <article key={item.id} className={className}>
+                  {row}
+                </article>
+              );
+            })}
           </div>
 
-          <p className="mt-6 font-mono text-[11px] leading-6 text-ink/45">
-            THESE ARE EDITORIAL PLACEHOLDERS, NOT CLAIMS OF COMPLETED PROJECTS.
-          </p>
         </div>
       </Reveal>
 

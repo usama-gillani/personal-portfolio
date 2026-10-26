@@ -1,16 +1,19 @@
 "use client";
 
 import { useEffect, useState, type MouseEvent } from "react";
+import { usePathname } from "next/navigation";
 import { ArrowUpRight } from "@/components/icons";
 
 const links = [
-  { label: "About", href: "#about", id: "about" },
-  { label: "Expertise", href: "#expertise", id: "expertise" },
-  { label: "Work", href: "#work", id: "work" },
-  { label: "Approach", href: "#approach", id: "approach" },
+  { label: "About", href: "/#about", id: "about" },
+  { label: "Expertise", href: "/#expertise", id: "expertise" },
+  { label: "Work", href: "/#work", id: "work" },
+  { label: "Approach", href: "/#approach", id: "approach" },
 ];
 
 export default function SiteHeader() {
+  const pathname = usePathname();
+  const onCase = pathname.startsWith("/work");
   const [active, setActive] = useState("");
 
   useEffect(() => {
@@ -48,7 +51,7 @@ export default function SiteHeader() {
     <header className="sticky top-0 z-30 border-b border-white/10 bg-void/75 backdrop-blur-xl">
       <div className="mx-auto flex max-w-360 items-center justify-between px-5 py-4 sm:px-8 lg:px-14">
         <a
-          href="#top"
+          href="/#top"
           aria-label="Usama Gillani — back to home"
           className="group flex items-center gap-3 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lime"
         >
@@ -71,14 +74,14 @@ export default function SiteHeader() {
             <a
               key={link.id}
               href={link.href}
-              className={`nav-link ${active === link.id ? "is-active" : ""}`}
+              className={`nav-link ${(onCase ? link.id === "work" : active === link.id) ? "is-active" : ""}`}
             >
               {link.label}
             </a>
           ))}
         </nav>
 
-        <a href="#contact" className="button-signal hidden sm:inline-flex">
+        <a href="/#contact" className="button-signal hidden sm:inline-flex">
           Let&apos;s talk <ArrowUpRight />
         </a>
 
@@ -97,13 +100,13 @@ export default function SiteHeader() {
             aria-label="Mobile navigation"
             className="absolute right-0 top-14 z-50 flex w-64 flex-col border border-white/10 bg-surface p-3 shadow-xl"
           >
-            {[...links, { label: "Contact", href: "#contact", id: "contact" }].map(
+            {[...links, { label: "Contact", href: "/#contact", id: "contact" }].map(
               (link) => (
                 <a
                   key={link.href}
                   href={link.href}
                   onClick={closeMenu}
-                  className={`mobile-nav-link ${active === link.id ? "is-active" : ""}`}
+                  className={`mobile-nav-link ${(onCase ? link.id === "work" : active === link.id) ? "is-active" : ""}`}
                 >
                   {link.label}
                   <ArrowUpRight className="size-4" />
