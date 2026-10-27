@@ -85,6 +85,7 @@ const cases: {
   title: string;
   description: string;
   href?: string;
+  status?: "wip";
 }[] = [
   {
     id: "CASE 01",
@@ -127,6 +128,21 @@ const cases: {
     description:
       "Five file types enter one pipeline. Text PDF pages stay with Docling, scans go to a layout API, and every path becomes sections, chunks, and dense BGE-M3 vectors.",
     href: "/work/document-ingestion",
+  },
+  {
+    id: "CASE 07",
+    title: "Database onboarding",
+    description:
+      "POST /connection checks a Postgres database, then walks selected tables, metric definitions, and guarded SELECT queries. The finished connector and agent are the next case.",
+    href: "/work/database-onboarding",
+    status: "wip",
+  },
+  {
+    id: "CASE 08",
+    title: "Live database agent",
+    description:
+      "A connector inspects a live database and saves the selected tables on a folder. The assistant loads that catalog, then runs a read-only SELECT inside it.",
+    href: "/work/live-database-agent",
   },
 ];
 
@@ -464,7 +480,11 @@ export default function Home() {
                       {item.description}
                     </p>
                   </div>
-                  {item.href ? (
+                  {item.status === "wip" ? (
+                    <span className="inline-flex w-fit items-center gap-2 border border-lime/30 px-3 py-2 font-mono text-[10px] uppercase tracking-wider text-lime">
+                      <Dot className="size-1.5" /> WIP
+                    </span>
+                  ) : item.href ? (
                     <span className="inline-flex w-fit items-center gap-2 bg-lime px-3 py-2 font-mono text-[10px] uppercase tracking-wider text-void">
                       Read <ArrowUpRight className="size-3.5" />
                     </span>
