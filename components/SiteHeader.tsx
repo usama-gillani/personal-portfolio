@@ -61,7 +61,7 @@ export default function SiteHeader() {
           <span className="text-sm font-semibold tracking-tight">
             Usama Gillani
             <span className="mt-0.5 block text-xs font-normal text-ink/50">
-              Agentic AI Engineer
+              AI Engineer
             </span>
           </span>
         </a>

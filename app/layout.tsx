@@ -18,14 +18,14 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://example.com"),
   title: {
-    default: "Usama Gillani — Agentic AI Engineer",
+    default: "Usama Gillani — AI Engineer",
     template: "%s | Usama Gillani",
   },
   description:
     "Syed Muhammad Usama Altaf Gillani — AI engineering, LLM applications, intelligent systems, and backend development.",
   applicationName: "Usama Gillani Portfolio",
   openGraph: {
-    title: "Usama Gillani — Agentic AI Engineer",
+    title: "Usama Gillani — AI Engineer",
     description: "Building intelligence, not just interfaces.",
     type: "website",
   },

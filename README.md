@@ -1,6 +1,6 @@
 # Usama Gillani
 
-Personal portfolio for Syed Muhammad Usama Altaf Gillani, an agentic AI engineer. It is a single-page Next.js site with a dark theme, an animated agent field, and sections for about, expertise, work, approach, and contact.
+Personal portfolio for Syed Muhammad Usama Altaf Gillani, an AI engineer. It is a single-page Next.js site with a dark theme, an animated agent field, and sections for about, expertise, work, approach, and contact.
 
 ## Run locally
 

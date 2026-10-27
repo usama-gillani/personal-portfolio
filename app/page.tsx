@@ -9,12 +9,12 @@ import { ArrowDown, ArrowUpRight, Dot } from "@/components/icons";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Usama Gillani — Agentic AI Engineer",
+    absolute: "Usama Gillani — AI Engineer",
   },
   description:
     "Syed Muhammad Usama Altaf Gillani — AI engineering, LLM applications, intelligent systems, and backend development.",
   openGraph: {
-    title: "Usama Gillani — Agentic AI Engineer",
+    title: "Usama Gillani — AI Engineer",
     description: "Building intelligence, not just interfaces.",
     type: "website",
   },
@@ -26,7 +26,7 @@ const expertise = [
     title: "LLM applications",
     description:
       "Building AI-powered applications that connect language models to useful workflows, structured data, and real-world tasks.",
-    tags: ["LLMs", "Prompt engineering", "RAG"],
+    tags: ["LLMs", "OpenAI SDK", "TanStack AI", "Langfuse", "RAG"],
     mark: "Aa",
     agent: "Planner",
   },
@@ -53,7 +53,7 @@ const expertise = [
     title: "Backend engineering",
     description:
       "Connecting AI capabilities to reliable application logic, APIs, data flows, and maintainable software.",
-    tags: ["Python", "FastAPI", "TypeScript"],
+    tags: ["Python", "FastAPI", "TypeScript", "Kafka bootstrap", "Debezium", "CDC"],
     mark: "</>",
     agent: "Toolsmith",
   },
@@ -163,7 +163,7 @@ export default function Home() {
 
         <div className="relative z-10 flex items-center gap-3 text-xs font-medium uppercase tracking-[0.2em] text-ink/55">
           <Dot />
-          Agentic AI engineer · Thoughtful by design
+          AI engineer · Thoughtful by design
         </div>
 
         <div className="relative z-10 mt-10 grid gap-12 lg:mt-14 lg:grid-cols-[1fr_320px] lg:items-end lg:gap-16">
@@ -210,7 +210,17 @@ export default function Home() {
             </div>
 
             <div className="mt-6 flex flex-wrap gap-2">
-              {["AI systems", "LLMs", "Python", "APIs"].map((item) => (
+              {[
+                "AI systems",
+                "LLMs",
+                "Python",
+                "OpenAI SDK",
+                "TanStack AI",
+                "Langfuse",
+                "Kafka bootstrap",
+                "Debezium",
+                "CDC",
+              ].map((item) => (
                 <span key={item} className="tag">
                   {item}
                 </span>
@@ -315,19 +325,30 @@ export default function Home() {
                 <span className="caret" aria-hidden="true" />
               </p>
 
-              <div className="mt-10 flex flex-wrap gap-3">
-                {[
-                  "Problem solving",
-                  "Systems thinking",
-                  "Continuous learning",
-                ].map((item) => (
-                  <span
-                    key={item}
-                    className="border border-white/15 px-4 py-2 text-xs text-ink/75"
-                  >
-                    {item}
-                  </span>
-                ))}
+              <div className="mt-10">
+                <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink/55">
+                  MSAI coursework
+                </p>
+                <ul className="mt-4 flex flex-wrap gap-3">
+                  {[
+                    "Artificial Intelligence",
+                    "Machine Learning",
+                    "Deep Learning",
+                    "Reinforcement Learning",
+                    "Natural Language Processing",
+                    "Data Mining",
+                    "Mathematical Methods in AI",
+                    "Software Project Management",
+                    "Research Methodology",
+                  ].map((item) => (
+                    <li
+                      key={item}
+                      className="border border-white/15 px-4 py-2 text-xs text-ink/75"
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
