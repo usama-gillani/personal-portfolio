@@ -314,7 +314,7 @@ export default function LiveDatabaseAgentPage() {
             {facts.map(([label, value]) => (
               <div
                 key={label}
-                className="border-b border-white/10 p-5 sm:border-l sm:first:border-l-0 lg:[&:nth-child(3n+1)]:border-l-0"
+                className="border-b border-white/10 p-5 sm:border-l sm:first:border-l-0 lg:nth-[3n+1]:border-l-0"
               >
                 <dt className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink/40">
                   {label}
